@@ -4,7 +4,7 @@ metadata:
   name: details-route
 spec:
   hosts:
-  - "*"
+  - details
   http:
   - name: "details-route"
     route:
