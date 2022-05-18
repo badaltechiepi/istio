@@ -10,3 +10,7 @@ spec:
     route:
     - destination:
         host: details
+    retries:
+      attempts: 3
+      perTryTimeout: 2s
+      retryOn: 4xx  
