@@ -46,7 +46,7 @@ spec:
       serviceAccountName: bookinfo-details
       containers:
       - name: details
-        image: shaikkhajaibrahim/details-api
+        image: shaikkhajaibrahim/details-api:v1.6
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
