@@ -27,7 +27,7 @@ metadata:
   name: details-v2
   labels:
     app: details
-    version: v2
+    version: v1
 spec:
   replicas: 4
   selector:
