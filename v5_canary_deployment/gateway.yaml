@@ -12,7 +12,7 @@ spec:
       protocol: HTTP
     hosts:
     - "*"
-# now looking into the canary deployment
+# now looking into the blue and green deployment 
 # version-1
 ---
 apiVersion: networking.istio.io/v1alpha3
@@ -39,16 +39,38 @@ spec:
     route:
     - destination:
         host: productpage
-        subset: v1  
+        subset: v1
         port:
           number: 9080
-      weight: 40
+#verson-2
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: testbookinfo-gateway
+spec:
+  hosts:
+  - testbookinfo.bksahu.com
+  gateways:
+  - bookinfo-gateway
+  http:
+  - match:
+    - uri:
+        exact: /productpage
+    - uri:
+        prefix: /static
+    - uri:
+        exact: /login
+    - uri:
+        exact: /logout
+    - uri:
+        prefix: /api/v1/products
+    route:
     - destination:
         host: productpage
-        subset: v2 
+        subset: v2
         port:
           number: 9080
-      weight: 60  
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
